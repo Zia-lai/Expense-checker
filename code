@@ -1,0 +1,31 @@
+import csv
+
+def add_expense():
+    amount = input("Amount: ")
+    category = input("Category: ")
+
+    with open("expenses.csv", "a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([amount, category])
+
+    print("Expense added!")
+
+def view_expenses():
+    with open("expenses.csv", "r") as file:
+        reader = csv.reader(file)
+        for row in reader:
+            print(row)
+
+while True:
+    print("\n1. Add Expense")
+    print("2. View Expenses")
+    print("3. Exit")
+
+    choice = input("Choose: ")
+
+    if choice == "1":
+        add_expense()
+    elif choice == "2":
+        view_expenses()
+    elif choice == "3":
+        break
